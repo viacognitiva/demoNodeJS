@@ -15,6 +15,7 @@ app.controller('myController', function($scope, $http) {
                    }catch(exception){
                       $scope.reset();
                       console.log('Exception tratada'+exception);
+                      $scope.errorMessage='Registro não encontrado.';
                    }
 
              });
@@ -30,7 +31,7 @@ app.controller('myController', function($scope, $http) {
 
        $scope.reset = function(){
                  // $scope.successMessage='';
-                 // $scope.errorMessage='';
+                  $scope.errorMessage='';
                  // $scope.user={};
                   $scope.output=[];
                   $scope.myForm.$setPristine(); //reset Form
