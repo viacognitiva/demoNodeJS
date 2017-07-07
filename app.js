@@ -7,25 +7,27 @@ var express = require('express'),
 
     var cloudant_url="https://b6a29beb-91ed-4256-81c4-458e3ff55a71-bluemix:2cd1080e5c8ac457d9cbc3105aabfa7f28abfe45e03cae99eaa5910dbc84ab6a@b6a29beb-91ed-4256-81c4-458e3ff55a71-bluemix.cloudant.com";
     var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
+    var user = 'b6a29beb-91ed-4256-81c4-458e3ff55a71-bluemix'; // Set this to your own account
+    var password = '2cd1080e5c8ac457d9cbc3105aabfa7f28abfe45e03cae99eaa5910dbc84ab6a';
 
-    /*
     if(process.env.VCAP_SERVICES)
     {
     	services = JSON.parse(process.env.VCAP_SERVICES);
     	if(services.cloudantNoSQLDB) //Check if cloudantNoSQLDB service is bound to your project
     	{
     		cloudant_url = services.cloudantNoSQLDB[0].credentials.url;  //Get URL and other paramters
+    		user = services.cloudantNoSQLDB[0].credentials.username;
+    		password = services.cloudantNoSQLDB[0].credentials.password;
     		console.log("Name = " + services.cloudantNoSQLDB[0].name);
     		console.log("URL = " + services.cloudantNoSQLDB[0].credentials.url);
             console.log("username = " + services.cloudantNoSQLDB[0].credentials.username);
     		console.log("password = " + services.cloudantNoSQLDB[0].credentials.password);
     	}
-    }*/
+    }
 
     //Connect using cloudant npm and URL obtained from previous step
 
-    var user = 'b6a29beb-91ed-4256-81c4-458e3ff55a71-bluemix'; // Set this to your own account
-    var password = '2cd1080e5c8ac457d9cbc3105aabfa7f28abfe45e03cae99eaa5910dbc84ab6a';
+
     //Edit this variable value to change name of database.
     var dbname = 'bdviacognitiva';
 
@@ -37,7 +39,7 @@ var express = require('express'),
                  });*/
 
     var app = express();
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || 8000);
 
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');

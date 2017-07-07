@@ -6,3 +6,11 @@ applications:
   name: appdemo
   host: appdemo${random-word}
   disk_quota: 512M
+  services:
+    - viacognitiva-cloudantNoSQLDB
+declared-services:
+  viacognitiva-cloudantNoSQLDB:
+    label: cloudantNoSQLDB
+    plan:  Lite
+
+
